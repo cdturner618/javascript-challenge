@@ -31,14 +31,11 @@ function runEnter() {
     console.log(filtered_data);
 };
 
-
-
-
 // var table = d3.select("table");
 // table.html("<tbody></tbody>");
 // var tableBody = d3.select("tbody");
 // filtered_data.forEach(datedata => {
-//     var trow = tableBody.append("tr")
+// var trow = tableBody.append("tr")
 //     Object.values(datedata).forEach(value => {
 //         trow.append("td").text(value)
 //     });
