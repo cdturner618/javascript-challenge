@@ -14,29 +14,48 @@ form.on("submit", runEnter);
 
 // Complete the event handler function for the form
 function runEnter() {
-
+    // tableData = data;
 
     // Prevent the page from refreshing
-    form.on('submit', () => {
-        d3.event.preventDefault();
-    });
+    d3.event.preventDefault();
+
+    //Deep copy 
+    var filtered_data = JSON.parse(JSON.stringify(data));
+    // filtered_data = data;
 
     // Select the input element and get the raw HTML node
-    var input = d3.select("#datetime");
-
-    var inputValue = input.property("value");
+    var inputDate = d3.select("#datetime").property('value');
+    var inputCity = d3.select("#city").property('value');
+    var inputState = d3.select("#state").property('value');
+    var inputCountry = d3.select("#country").property('value');
+    var inputShape = d3.select("#shape").property('value');
 
     // console.log(inputValue);
-    var filtered_data = tableData.filter(d => d.datetime == inputValue);
-    console.log(filtered_data);
-};
+    if (inputDate)
+        filtered_data = filtered_data.filter(d => d.datetime == inputDate);
+    if (inputCity)
+        filtered_data = filtered_data.filter(d => d.city == inputCity);
+    if (inputState)
+        filtered_data = filtered_data.filter(d => d.state == inputState);
+    if (inputCountry)
+        filtered_data = filtered_data.filter(d => d.country == inputCountry);
+    if (inputShape)
+        filtered_data = filtered_data.filter(d => d.shape == inputShape);
 
-// var table = d3.select("table");
-// table.html("<tbody></tbody>");
-// var tableBody = d3.select("tbody");
-// filtered_data.forEach(datedata => {
-// var trow = tableBody.append("tr")
-//     Object.values(datedata).forEach(value => {
-//         trow.append("td").text(value)
-//     });
-// });
+    console.log(filtered_data);
+    // console.log(tableData);
+
+
+    var table = d3.select("table");
+    table.html("<tbody></tbody>");
+    var tableBody = d3.select("tbody");
+    filtered_data.forEach(datedata => {
+        var trow = tableBody.append("tr")
+        Object.values(datedata).forEach(value => {
+            trow.append("td").text(value)
+        });
+    });
+
+
+
+};
