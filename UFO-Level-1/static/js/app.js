@@ -32,15 +32,15 @@ function runEnter() {
 
     // console.log(inputValue);
     if (inputDate)
-        filtered_data = filtered_data.filter(d => d.datetime == inputDate);
+        filtered_data = filtered_data.filter(d => Date.parse(d.datetime) == Date.parse(inputDate));
     if (inputCity)
-        filtered_data = filtered_data.filter(d => d.city == inputCity);
+        filtered_data = filtered_data.filter(d => d.city.toLowerCase() == inputCity.toLowerCase());
     if (inputState)
-        filtered_data = filtered_data.filter(d => d.state == inputState);
+        filtered_data = filtered_data.filter(d => d.state.toLowerCase() == inputState.toLowerCase());
     if (inputCountry)
-        filtered_data = filtered_data.filter(d => d.country == inputCountry);
+        filtered_data = filtered_data.filter(d => d.country.toLowerCase() == inputCountry.toLowerCase());
     if (inputShape)
-        filtered_data = filtered_data.filter(d => d.shape == inputShape);
+        filtered_data = filtered_data.filter(d => d.shape.toLowerCase() == inputShape.toLowerCase());
 
     console.log(filtered_data);
     // console.log(tableData);
